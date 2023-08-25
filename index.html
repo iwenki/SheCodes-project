@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather forecast</title>
+    <script src="https://kit.fontawesome.com/2ecceee7a9.js" crossorigin="anonymous"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+      crossorigin="anonymous"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Vithkuqi:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="src/styles.css"/> 
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="card">
+        <div class="card-body">
+          <form id="searchEngine">
+            <div class="row">
+              <div class="col-3"><input class="form-control form-control-lg" id="citySearch" type="text" placeholder="Enter city" aria-label=".form-control-lg example">
+             </div>
+             <div class="col-3"><button type="button[type=button]:not(:disabled)" class="btn btn-success" id="cityButton">Search</button></div>
+             <div class="col-3"><button  type="button]:not(:disabled)"class="btn btn-primary" id="currentButton">Current</button></div>
+             <div class="col-3"><h1>Weather Forecast</h1></div>
+      </form>
+        </div>
+      </div>
+      <div class="row city">
+        <div class="col-6" id="place"></div>
+      </div>
+      <div class="row currentTime">
+        <div class="col-6"id="timeDay"></div>
+      </div>
+      <div class="row sun">
+        <div class="col"><i class="fa-solid fa-cloud-sun mainsun"></i></div>
+        <div class="col">
+          <ul class="list-group list-group-flush percentages">
+            <li class="list-group-item cell"id="precip">Feels like: </li>
+            <li class="list-group-item cell" id="humid">Humidity: </li>
+            <li class="list-group-item cell"id="wind">Wind: </li>
+          </ul> 
+        </div>
+      </div>
+      <div class="row temp">
+        <div class="col-6"><span id="degrees"></span><a href="#" id="celsius">°C</a>|<a href="#" id="units">°F</a></div>
+      </div>
+      <div class="row forecast">
+        <div class="col-6" id="description"></div>
+      </div>
+      <hr>
+      <div class="row lowbar">
+        <div class="col"><i class="fa-solid fa-cloud-sun cloudy"></i>
+        <div class="row days">Mon</div>
+         <div class="row highlow">⬆️29°C ⬇️23°C</div>
+        </div>
+        <div class="col"><i class="fa-solid fa-cloud-sun cloudy"></i>
+        <div class="row days">Tues</div>
+        <div class="row highlow">⬆️30°C ⬇️24°C</div>
+        </div>
+        <div class="col"><i class="fa-solid fa-cloud-rain cloudy"></i>
+        <div class="row days">Wed</div>
+        <div class="row highlow">⬆️31°C ⬇️24°C</div>
+        </div>
+        <div class="col"><i class="fa-solid fa-cloud-rain cloudy"></i>
+        <div class="row days">Thurs</div>
+        <div class="row highlow">⬆️26°C ⬇️19°C</div>
+        </div>
+        <div class="col"><i class="fa-solid fa-cloud-sun cloudy"></i>
+         <div class="row days">Fri</div>
+         <div class="row highlow">⬆️26°C ⬇️18°C</div>
+        </div>
+      </div>
+      </div>
+    </div>
+    <script src=src/script.js></script>
+  </body>
+</html>
