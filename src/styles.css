@@ -67,6 +67,7 @@ footer {
   background-color: rgb(236, 193, 215, 0.7);
   max-width: 700px;
   margin: 0 auto;
+  border-radius:4px;
 
 }
 .git,.resume{
