@@ -19,7 +19,7 @@ function formatTime(date) {
     minutes = `0${minutes}`;
   }
   {
-    return `${todayDay},${hour}:${minutes}`;
+    return `Last update: ${todayDay},${hour}:${minutes}`;
   }
 }
 function revealPlaces(event) {
