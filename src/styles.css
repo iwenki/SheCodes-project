@@ -55,8 +55,8 @@ h1,
 }
 
 .mainsun {
-  font-size: 150px;
-  color: rgb(38, 14, 117);
+  transform:scale(2);
+  padding-top: 10px;
 }
 .cloudy {
   font-size: 80px;

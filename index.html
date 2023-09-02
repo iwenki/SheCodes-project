@@ -23,7 +23,7 @@
         <div class="card-body">
           <form id="searchEngine">
             <div class="row">
-              <div class="col-3"><input class="form-control form-control-lg" id="citySearch" type="text" placeholder="Enter city" aria-label=".form-control-lg example">
+              <div class="col-3"><input class="form-control form-control-lg" id="citySearch" type="text" placeholder="Enter city" autocomplete="off" aria-label=".form-control-lg example">
              </div>
              <div class="col-3"><button type="button[type=button]:not(:disabled)" class="btn btn-success w-100" id="cityButton">Search</button></div>
              <div class="col-3"><button  type="button]:not(:disabled)"class="btn btn-primary w-100" id="currentButton">Current</button></div>
@@ -38,7 +38,7 @@
         <div class="col-6"id="timeDay"></div>
       </div>
       <div class="row sun">
-        <div class="col"><i class="fa-solid fa-cloud-sun mainsun"></i></div>
+        <div class="col"><img class="mainsun" src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/scattered-clouds-day.png" alt="weatherIcon" id="icon"></img></div>
         <div class="col">
           <ul class="list-group list-group-flush percentages">
             <li class="list-group-item cell"id="precip">Feels like: </li>

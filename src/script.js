@@ -25,10 +25,11 @@ function formatTime(date) {
 function revealPlaces(event) {
   event.preventDefault();
   let location = document.querySelector("#citySearch").value;
-  let apiKey = "cf6b50b908fa2e0baca3eed8a569a5f6";
-  let apiUrl = "https://api.openweathermap.org/data/2.5/weather?";
+  let apiKey = "cbc90ba0a21t28a990f44b7f6f3ea68o";
+  let apiUrl =
+    "https://api.shecodes.io/weather/v1/current?query=";
   axios
-    .get(`${apiUrl}q=${location}&appid=${apiKey}&units=metric`)
+    .get(`${apiUrl}${location}&key=${apiKey}&units=metric`)
     .then(currentTemp);
 }
 function changeUnit(event) {
@@ -44,18 +45,22 @@ function changeMeasurement(event) {
 
 function currentTemp(response) {
   let temperature = document.querySelector("#degrees");
-  temperature.innerHTML = Math.round(response.data.main.temp);
+  temperature.innerHTML = Math.round(response.data.temperature.current);
   let details = document.querySelector("#description");
-  details.innerHTML = response.data.weather[0].description;
-  document.querySelector("#place").innerHTML=response.data.name;
+  details.innerHTML = response.data.condition.description;
+  document.querySelector("#place").innerHTML=response.data.city;
   let feelsLike = document.querySelector("#precip");
   let humidity = document.querySelector("#humid");
   let windShield = document.querySelector("#wind");
   feelsLike.innerHTML = `Feels like: ${Math.round(
-    response.data.main.feels_like
+    response.data.temperature.feels_like
   )}°C`;
-  humidity.innerHTML = `Humidity: ${Math.round(response.data.main.humidity)}%`;
+  humidity.innerHTML = `Humidity: ${Math.round(response.data.temperature.humidity)}%`;
   windShield.innerHTML = `Wind: ${Math.round(response.data.wind.speed)}  km/h`;
+  let iconElement=document.querySelector("#icon");
+  iconElement.setAttribute(
+    "src",
+    `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon}.png`);
 }
 
 function activateLocation(event) {
@@ -65,10 +70,11 @@ function activateLocation(event) {
 function displayCurrent(position){
 let long = position.coords.longitude;
 let lat = position.coords.latitude;
-let apiKey = "cf6b50b908fa2e0baca3eed8a569a5f6";
-let apiUrl = "https://api.openweathermap.org/data/2.5/weather?";
+let apiKey = "cbc90ba0a21t28a990f44b7f6f3ea68o";
+let apiUrl =
+  "https://api.shecodes.io/weather/v1/current?";
 axios
-  .get(`${apiUrl}lat=${lat}&lon=${long}&appid=${apiKey}&units=metric`)
+  .get(`${apiUrl}lat=${lat}&lon=${long}&key=${apiKey}&units=metric`)
   .then(currentTemp);
 }
 let time = document.querySelector("#timeDay");
@@ -84,5 +90,7 @@ let fahrenheit = document.querySelector("#units");
 fahrenheit.addEventListener("click", changeUnit);
 let celsius = document.querySelector("#celsius");
 celsius.addEventListener("click", changeMeasurement);
+//if (icon===rain) if(icon===sunny) if(icon===cloudy)
+//setattribute(background,"insert new img url")
 
 
