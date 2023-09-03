@@ -35,17 +35,23 @@ function revealPlaces(event) {
 function changeUnit(event) {
   event.preventDefault();
   let temperature = document.querySelector("#degrees");
-  temperature.innerHTML = 88;
+  let fahrenheitTemp = (celsiusTemp * 9/5) + 32;
+  fahrenheit.classList.add("active");
+  celsius.classList.remove("active");
+  temperature.innerHTML=Math.round(fahrenheitTemp);
 }
-function changeMeasurement(event) {
+function changeBack(event) {
   event.preventDefault();
   let temperature = document.querySelector("#degrees");
-  temperature.innerHTML = 31;
+  celsius.classList.add("active");
+  fahrenheit.classList.remove("active");
+  temperature.innerHTML = Math.round(celsiusTemp);
 }
 
 function currentTemp(response) {
   let temperature = document.querySelector("#degrees");
-  temperature.innerHTML = Math.round(response.data.temperature.current);
+  celsiusTemp=response.data.temperature.current;
+  temperature.innerHTML = Math.round(celsiusTemp);
   let details = document.querySelector("#description");
   details.innerHTML = response.data.condition.description;
   document.querySelector("#place").innerHTML=response.data.city;
@@ -85,11 +91,11 @@ let engine = document.querySelector("#searchEngine");
 engine.addEventListener("submit", revealPlaces);
 let button = document.querySelector("#currentButton");
 button.addEventListener("click", activateLocation);
-
+let celsiusTemp=null;
 let fahrenheit = document.querySelector("#units");
 fahrenheit.addEventListener("click", changeUnit);
 let celsius = document.querySelector("#celsius");
-celsius.addEventListener("click", changeMeasurement);
+celsius.addEventListener("click", changeBack);
 //if (icon===rain) if(icon===sunny) if(icon===cloudy)
 //setattribute(background,"insert new img url")
 

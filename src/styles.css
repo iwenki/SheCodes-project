@@ -35,6 +35,11 @@ h1,
 #description::first-letter{
   text-transform: capitalize;
 }
+.temp .active{
+  color:#212529;
+  cursor: default;
+  text-decoration: none;
+}
 .city,
 .currentTime,
 .percentages,
@@ -55,8 +60,8 @@ h1,
 }
 
 .mainsun {
-  transform:scale(2);
-  padding-top: 10px;
+  transform:scale(1.8);
+  padding-top: 5px;
 }
 .cloudy {
   font-size: 80px;
