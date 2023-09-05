@@ -50,20 +50,23 @@ function changeBack(event) {
 
 function currentTemp(response) {
   let temperature = document.querySelector("#degrees");
-  celsiusTemp=response.data.temperature.current;
-  temperature.innerHTML = Math.round(celsiusTemp);
   let details = document.querySelector("#description");
-  details.innerHTML = response.data.condition.description;
-  document.querySelector("#place").innerHTML=response.data.city;
   let feelsLike = document.querySelector("#precip");
   let humidity = document.querySelector("#humid");
   let windShield = document.querySelector("#wind");
+  let iconElement=document.querySelector("#icon");
+
+  celsiusTemp=response.data.temperature.current;
+  
+  temperature.innerHTML = Math.round(celsiusTemp);
+  details.innerHTML = response.data.condition.description;
+  document.querySelector("#place").innerHTML=response.data.city;
   feelsLike.innerHTML = `Feels like: ${Math.round(
     response.data.temperature.feels_like
   )}°C`;
   humidity.innerHTML = `Humidity: ${Math.round(response.data.temperature.humidity)}%`;
   windShield.innerHTML = `Wind: ${Math.round(response.data.wind.speed)}  km/h`;
-  let iconElement=document.querySelector("#icon");
+  
   iconElement.setAttribute(
     "src",
     `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon}.png`);
