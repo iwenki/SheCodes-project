@@ -57,7 +57,7 @@ function currentTemp(response) {
   let iconElement=document.querySelector("#icon");
 
   celsiusTemp=response.data.temperature.current;
-  
+
   temperature.innerHTML = Math.round(celsiusTemp);
   details.innerHTML = response.data.condition.description;
   document.querySelector("#place").innerHTML=response.data.city;
@@ -70,12 +70,36 @@ function currentTemp(response) {
   iconElement.setAttribute(
     "src",
     `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon}.png`);
+
+    activateDailyForecast(response.data.coordinates);
+}
+
+function activateDailyForecast(coordinates){
+  let apiKey = "cbc90ba0a21t28a990f44b7f6f3ea68o";
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?lon=${coordinates.longitude}&lat=${coordinates.latitude}&key=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(showDaily);
+}
+
+function showDaily(response){
+  let daily=document.querySelector("#dailyForecast");
+  let forecastContent=`<div class="row">`;
+  let days=["Thurs","Fri","Sat","Sun","Mon"];
+  days.forEach(function(day){
+    forecastContent=forecastContent + 
+  `<div class="col"><i class="fa-solid fa-cloud-sun cloudy"></i>
+        <div class="row days">${day}</div>
+         <div class="row highlow">⬆️<span class="weather-max">29°C</span> ⬇️<span class="weather-min">23°C</span></div>
+        </div>`;
+  });
+  forecastContent=forecastContent+`</div>`;
+  daily.innerHTML=forecastContent;
 }
 
 function activateLocation(event) {
   event.preventDefault();
   navigator.geolocation.getCurrentPosition(displayCurrent);
 }
+
 function displayCurrent(position){
 let long = position.coords.longitude;
 let lat = position.coords.latitude;
@@ -86,6 +110,7 @@ axios
   .get(`${apiUrl}lat=${lat}&lon=${long}&key=${apiKey}&units=metric`)
   .then(currentTemp);
 }
+
 let time = document.querySelector("#timeDay");
 let date = new Date();
 time.innerHTML = formatTime(date);
@@ -99,6 +124,7 @@ let fahrenheit = document.querySelector("#units");
 fahrenheit.addEventListener("click", changeUnit);
 let celsius = document.querySelector("#celsius");
 celsius.addEventListener("click", changeBack);
+
 //if (icon===rain) if(icon===sunny) if(icon===cloudy)
 //setattribute(background,"insert new img url")
 
