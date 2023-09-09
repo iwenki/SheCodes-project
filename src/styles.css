@@ -1,8 +1,9 @@
 body {
-  background-image: url("https://s3.amazonaws.com/shecodesio-production/uploads/files/000/091/640/original/pexels-lumn-1028600.jpg?1690747709");
-  background-size: cover;
-  background-repeat: no-repeat;
+background-image: url("https://s3.amazonaws.com/shecodesio-production/uploads/files/000/096/373/original/pexels-francesco-ungaro-281260.jpg?1694276260");
+background-size: cover;
+background-repeat:no-repeat;
 }
+
 .card {
   background: linear-gradient(
     106.5deg,
@@ -63,11 +64,7 @@ h1,
   transform:scale(1.8);
   padding-top: 5px;
 }
-.cloudy {
-  font-size: 80px;
-  color: rgb(18, 92, 113);
-  text-align: center;
-}
+
 footer {
   text-align: center;
   color: #28176d;
@@ -84,3 +81,4 @@ footer {
 .git:hover,.resume:hover{
   text-decoration: underline;
 }
+
