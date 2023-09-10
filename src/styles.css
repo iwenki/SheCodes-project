@@ -1,7 +1,7 @@
 body {
-background-image: url("https://s3.amazonaws.com/shecodesio-production/uploads/files/000/096/373/original/pexels-francesco-ungaro-281260.jpg?1694276260");
-background-size: cover;
-background-repeat:no-repeat;
+  background-image: url("https://s3.amazonaws.com/shecodesio-production/uploads/files/000/096/373/original/pexels-francesco-ungaro-281260.jpg?1694276260");
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .card {
@@ -33,13 +33,15 @@ h1,
   font-family: "Noto Serif Vithkuqi", serif;
   font-size: 30px;
 }
-#description::first-letter{
+#description::first-letter {
   text-transform: capitalize;
 }
-.temp .active{
-  color:#212529;
+.temp .active {
+  color: #212529;
   cursor: default;
   text-decoration: none;
+  font-weight: 800;
+  font-size: 22px;
 }
 .city,
 .currentTime,
@@ -50,8 +52,13 @@ h1,
   font-size: 20px;
   text-align: center;
 }
+
 .lowbar {
   text-align: center;
+}
+.weather-max,
+.weather-min {
+  padding: 0px;
 }
 .days,
 .highlow {
@@ -61,7 +68,7 @@ h1,
 }
 
 .mainsun {
-  transform:scale(1.8);
+  transform: scale(1.8);
   padding-top: 5px;
 }
 
@@ -71,14 +78,14 @@ footer {
   background-color: rgb(236, 193, 215, 0.7);
   max-width: 700px;
   margin: 0 auto;
-  border-radius:4px;
-
+  border-radius: 4px;
 }
-.git,.resume{
+.git,
+.resume {
   text-decoration: none;
-  color:#260E75;
+  color: #260e75;
 }
-.git:hover,.resume:hover{
+.git:hover,
+.resume:hover {
   text-decoration: underline;
 }
-

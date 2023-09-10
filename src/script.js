@@ -38,6 +38,7 @@ function changeUnit(event) {
   fahrenheit.classList.add("active");
   celsius.classList.remove("active");
   temperature.innerHTML = Math.round(fahrenheitTemp);
+  feelsLike.innerHTML = `Feels like: ${Math.round((weatherImpression * 9) / 5 + 32)}°F`;
   let daily = document.querySelector("#dailyForecast");
   let forecastInFahrenheit = `<div class="row">`;
   dailyWeather.forEach(function (dailyWeatherDay, index) {
@@ -66,6 +67,7 @@ function changeBack(event) {
   celsius.classList.add("active");
   fahrenheit.classList.remove("active");
   temperature.innerHTML = Math.round(celsiusTemp);
+  feelsLike.innerHTML = `Feels like: ${Math.round(weatherImpression)}°C`;
   let daily = document.querySelector("#dailyForecast");
   let forecastContent = `<div class="row">`;
   dailyWeather.forEach(function (dailyWeatherDay, index) {
@@ -92,7 +94,6 @@ function changeBack(event) {
 function currentTemp(response) {
   let temperature = document.querySelector("#degrees");
   let details = document.querySelector("#description");
-  let feelsLike = document.querySelector("#precip");
   let humidity = document.querySelector("#humid");
   let windShield = document.querySelector("#wind");
   let iconElement = document.querySelector("#icon");
@@ -100,16 +101,16 @@ function currentTemp(response) {
   let weatherIcon = response.data.condition.icon;
 
   celsiusTemp = response.data.temperature.current;
+  weatherImpression= response.data.temperature.feels_like;
+
+  celsius.classList.add("active");
+  fahrenheit.classList.remove("active");
 
   temperature.innerHTML = Math.round(celsiusTemp);
   details.innerHTML = response.data.condition.description;
   document.querySelector("#place").innerHTML = response.data.city;
-  feelsLike.innerHTML = `Feels like: ${Math.round(
-    response.data.temperature.feels_like
-  )}°C`;
-  humidity.innerHTML = `Humidity: ${Math.round(
-    response.data.temperature.humidity
-  )}%`;
+  feelsLike.innerHTML = `Feels like: ${Math.round(weatherImpression)}°C`;
+  humidity.innerHTML = `Humidity: ${Math.round(response.data.temperature.humidity)}%`;
   windShield.innerHTML = `Wind: ${Math.round(response.data.wind.speed)}  km/h`;
 
   iconElement.setAttribute(
@@ -131,9 +132,15 @@ function currentTemp(response) {
     weatherIcon === "thunderstorm-day"
   ) {
     body.style.backgroundImage = `url("https://s3.amazonaws.com/shecodesio-production/uploads/files/000/096/298/original/pexels-johannes-plenio-1118869.jpg?1694206762")`;
-  } else if (weatherIcon === "snow-night" || weatherIcon === "snow-day") {
+  } else if (
+    weatherIcon === "snow-night" || 
+    weatherIcon === "snow-day"
+    ) {
     body.style.backgroundImage = `url("https://s3.amazonaws.com/shecodesio-production/uploads/files/000/096/303/original/pexels-choice-6153987.jpg?1694208611")`;
-  } else if (weatherIcon === "mist-night" || weatherIcon === "mist-day") {
+  } else if (
+    weatherIcon === "mist-night" || 
+    weatherIcon === "mist-day"
+    ) {
     body.style.backgroundImage = `url("https://s3.amazonaws.com/shecodesio-production/uploads/files/000/096/305/original/pexels-kabita-darlami-18168288.jpg?1694209704")`;
   } else if (
     weatherIcon === "shower-rain-night" ||
@@ -215,10 +222,15 @@ time.innerHTML = formatTime(date);
 
 let engine = document.querySelector("#searchEngine");
 engine.addEventListener("submit", revealPlaces);
+
 let button = document.querySelector("#currentButton");
 button.addEventListener("click", activateLocation);
+
+let weatherImpression= null;
 let celsiusTemp = null;
 let dailyWeather = null;
+
+let feelsLike = document.querySelector("#precip");
 let fahrenheit = document.querySelector("#units");
 fahrenheit.addEventListener("click", changeUnit);
 let celsius = document.querySelector("#celsius");
