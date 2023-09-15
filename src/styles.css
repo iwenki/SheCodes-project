@@ -54,7 +54,7 @@ h1,
   text-align: center;
 }
 .percentages{
-  box-shadow: 10px 10px 14px 9px rgba(0, 0, 0, 0.3);
+  box-shadow: -10px 10px 14px 9px rgba(0, 0, 0, 0.3);
 }
 
 .lowbar {
