@@ -54,11 +54,15 @@ h1,
   text-align: center;
 }
 .percentages{
-  box-shadow: -10px 10px 14px 9px rgba(0, 0, 0, 0.3);
+  box-shadow: -8px 3px 5px 1px rgba(0, 0, 0, 0.3);
+}
+.temp{
+  margin-top: 5px;
 }
 
-.lowbar {
-  text-align: center;
+#dailyForecast{
+margin:0 auto;
+text-align: center;
 }
 .weather-max,
 .weather-min {
