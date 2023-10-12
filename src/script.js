@@ -179,10 +179,10 @@ function showDaily(response) {
   let daily = document.querySelector("#dailyForecast");
   let forecastContent = `<div class="row">`;
   dailyWeather.forEach(function (dailyWeatherDay, index) {
-    if (index > 0 && index < 6) {
+    if (index > 0 && index < 7) {
       forecastContent =
         forecastContent +
-        `<div class="col">
+        `<div class="col-sm-4">
       <img src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${
         dailyWeatherDay.condition.icon
       }.png"></img>
