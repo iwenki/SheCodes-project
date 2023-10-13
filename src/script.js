@@ -44,10 +44,10 @@ function changeUnit(event) {
   let daily = document.querySelector("#dailyForecast");
   let forecastInFahrenheit = `<div class="row">`;
   dailyWeather.forEach(function (dailyWeatherDay, index) {
-    if (index > 0 && index < 6) {
+    if (index > 0 && index < 7) {
       forecastInFahrenheit =
         forecastInFahrenheit +
-        `<div class="col">
+        `<div class="col-sm-4">
       <img src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${
         dailyWeatherDay.condition.icon
       }.png"></img>
@@ -73,10 +73,10 @@ function changeBack(event) {
   let daily = document.querySelector("#dailyForecast");
   let forecastContent = `<div class="row">`;
   dailyWeather.forEach(function (dailyWeatherDay, index) {
-    if (index > 0 && index < 6) {
+    if (index > 0 && index < 7) {
       forecastContent =
         forecastContent +
-        `<div class="col">
+        `<div class="col-sm-4">
       <img src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${
         dailyWeatherDay.condition.icon
       }.png"></img>
@@ -114,7 +114,7 @@ function currentTemp(response) {
   humidity.innerHTML = `Humidity: ${Math.round(
     response.data.temperature.humidity
   )}%`;
-  windShield.innerHTML = `Wind: ${Math.round(response.data.wind.speed)}  km/h`;
+  windShield.innerHTML = `Wind:  ${Math.round(response.data.wind.speed)}  km/h`;
 
   iconElement.setAttribute(
     "src",
@@ -274,4 +274,3 @@ let fahrenheit = document.querySelector("#units");
 fahrenheit.addEventListener("click", changeUnit);
 let celsius = document.querySelector("#celsius");
 celsius.addEventListener("click", changeBack);
-
