@@ -114,7 +114,7 @@ function currentTemp(response) {
   humidity.innerHTML = `Humidity: ${Math.round(
     response.data.temperature.humidity
   )}%`;
-  windShield.innerHTML = `Wind:  ${Math.round(response.data.wind.speed)}  km/h`;
+  windShield.innerHTML = `Wind: ${Math.round(response.data.wind.speed)}  km/h`;
 
   iconElement.setAttribute(
     "src",
